@@ -98,7 +98,6 @@ const Problem2 = () => {
   };
 
   const openModalB = () => {
-    handleSearch();
     // setSearchInput('')
     setModalAVisible(false);
     setModalBVisible(true);
