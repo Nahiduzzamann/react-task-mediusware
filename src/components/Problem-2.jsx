@@ -85,12 +85,12 @@ const Problem2 = () => {
   const handleSearch = async () => {
     const country = modalBVisible ? "United States" : "";
     const contacts = await fetchContacts(country, searchInput);
-    setContacts(contacts)
+    // setContacts(contacts)
     setFilteredContacts(contacts);
   };
 
   const openModalA = () => {
-    // setSearchInput('')
+    handleSearch();
     setModalAVisible(true);
     setModalBVisible(false);
     handleSearch();
@@ -98,7 +98,7 @@ const Problem2 = () => {
   };
 
   const openModalB = () => {
-    // setSearchInput('')
+    handleSearch();
     setModalAVisible(false);
     setModalBVisible(true);
     
@@ -120,10 +120,10 @@ const Problem2 = () => {
     setSelectedContact(null);
   };
 
-  useEffect(() => {
-    // You can also trigger search when the searchInput state changes
-    handleSearch();
-  }, [searchInput]);
+  // useEffect(() => {
+  //   fetchContacts()
+  //   // handleSearch();
+  // }, [searchInput]);
 
   return (
     <div className="container">
@@ -214,9 +214,7 @@ const Problem2 = () => {
             onChange={handleSearchInputChange}
             onKeyPress={handleKeyPress}
           />
-          {filteredContacts
-            ?.filter((contact) => contact?.country?.name === "United States")
-            .map((contact) => (
+          {filteredContacts?.map((contact) => (
               <button
                 key={contact?.id}
                 className="d-inline-block p-2 m-1 bg-light w-100 border-none border border-0"
